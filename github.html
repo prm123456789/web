@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lien GitHub - INCONNU WEB</title>
+  <link rel="stylesheet" href="css/github.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">INCONNU WEB</div>
+    <nav>
+      <a href="index.html">🏠 Accueil</a>
+      <a href="upload.html">Uploader</a>
+      <a href="#">Connexion</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="github-box">
+      <h1>🔗 Connecte ton dépôt GitHub</h1>
+      <p>Entre l’URL de ton dépôt pour préparer le déploiement automatique de ton bot.</p>
+
+      <form id="githubForm">
+        <input type="url" id="repoUrl" placeholder="https://github.com/toncompte/monbot" required />
+        <input type="password" id="token" placeholder="Token GitHub (optionnel)" />
+        <button type="submit">🚀 Déployer depuis GitHub</button>
+      </form>
+
+      <div class="status" id="statusBox"></div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 INCONNU BOY TECH — Tous droits réservés
+  </footer>
+
+  <script>
+    document.getElementById('githubForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const url = document.getElementById('repoUrl').value;
+      if (!url.includes('github.com')) {
+        return alert("❌ Ce n’est pas une URL GitHub valide.");
+      }
+      document.getElementById('statusBox').innerText = "⏳ Connexion au dépôt... (simulation)";
+      setTimeout(() => {
+        document.getElementById('statusBox').innerText = "✅ Dépôt connecté avec succès !";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
