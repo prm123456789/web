@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uploader un Bot - INCONNU WEB</title>
+  <link rel="stylesheet" href="css/upload.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">INCONNU WEB</div>
+    <nav>
+      <a href="index.html">🏠 Accueil</a>
+      <a href="#">Déployer</a>
+      <a href="#">Connexion</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="upload-box">
+      <h1>📦 Importe ton fichier ZIP</h1>
+      <p>Charge ton bot ici. Le système détectera automatiquement le fichier `package.json`.</p>
+
+      <form id="uploadForm">
+        <input type="file" id="fileInput" accept=".zip" required />
+        <button type="submit">🚀 Lancer le déploiement</button>
+      </form>
+
+      <div class="status" id="statusBox"></div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 INCONNU BOY TECH — Tous droits réservés
+  </footer>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const file = document.getElementById('fileInput').files[0];
+      if (!file) return alert('Aucun fichier sélectionné.');
+      document.getElementById('statusBox').innerText = '🛠️ Traitement du fichier... (simulation)';
+      // ici on simulera un upload vers backend plus tard
+      setTimeout(() => {
+        document.getElementById('statusBox').innerText = '✅ Bot prêt pour le déploiement !';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
