@@ -2,19 +2,39 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>INCONNU WEB SITE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Déploiement GitHub | INCONNU</title>
   <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
-  <header><h1>🚀 Bienvenue sur INCONNU WEB SITE</h1></header>
+  <header><h1>🐙 Déploiement GitHub</h1></header>
   <main>
-    <p>Déploie ton bot en toute simplicité :</p>
-    <a href="upload.html">📦 Déploiement ZIP</a><br>
-    <a href="github.html">🐙 Déploiement GitHub</a><br>
-    <a href="dashboard.html">📊 Dashboard des Bots</a>
+    <form id="githubForm">
+      <input type="url" id="repoUrl" placeholder="Lien GitHub du repo" required /><br><br>
+      <input type="text" id="token" placeholder="Token GitHub (facultatif)" /><br><br>
+      <button type="submit">Déployer</button>
+    </form>
+    <p id="statusBox"></p>
+    <a href="index.html">⬅ Retour</a>
   </main>
-  <footer>© 2025 INCONNU BOY TECH</footer>
+  <script type="module">
+    import { deployGitHub } from './js/deploy.js';
+
+    const form = document.getElementById('githubForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = document.getElementById('repoUrl').value;
+      const token = document.getElementById('token').value;
+      const status = document.getElementById('statusBox');
+      try {
+        status.textContent = '📡 Connexion...';
+        const res = await deployGitHub(url, token);
+        status.textContent = '✅ ' + res.message;
+      } catch (err) {
+        status.textContent = '❌ ' + err.message;
+      }
+    });
+  </script>
 </body>
 </html>
