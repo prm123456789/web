@@ -16,7 +16,12 @@ const upload = multer({ storage });
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('uploads'));
+
+// 🔥 Sert les fichiers HTML/CSS/JS
+app.use(express.static('public'));
+
+// Sert les fichiers zip uploadés (optionnel)
+app.use('/uploads', express.static('uploads'));
 
 app.post('/deploy/zip', upload.single('zipFile'), async (req, res) => {
   if (!req.file) return res.status(400).send({ error: 'Aucun fichier zip envoyé.' });
