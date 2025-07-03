@@ -1,70 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard - INCONNU WEB</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Bots | INCONNU</title>
+  <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">INCONNU WEB</div>
-    <nav>
-      <a href="index.html">🏠 Accueil</a>
-      <a href="upload.html">Uploader</a>
-      <a href="github.html">GitHub</a>
-    </nav>
-  </header>
-
+  <header><h1>📊 Dashboard des Bots Déployés</h1></header>
   <main>
-    <h1>📊 Liste de mes bots déployés</h1>
-
-    <div class="cards" id="botList">
-      <!-- Les bots s’afficheront ici -->
-    </div>
-
-    <div class="empty-msg" id="emptyMsg">
-      🚫 Aucun bot déployé pour le moment.<br>
-      Utilise <a href="upload.html">UPLOAD</a> ou <a href="github.html">GITHUB</a> pour en ajouter un.
-    </div>
+    <p>Fonctionnalité bientôt disponible : voir tous les bots déployés.</p>
+    <a href="index.html">⬅ Retour</a>
   </main>
-
-  <footer>
-    © 2025 INCONNU BOY TECH — Tous droits réservés
-  </footer>
-
-  <script>
-    // Simulation de données de bots (peut venir du backend plus tard)
-    const bots = [
-      { name: "INCONNU-XD", status: "online" },
-      { name: "QUEEN-ASUNA-BOT", status: "offline" },
-      { name: "BOT-SHADOW-NOVA", status: "online" }
-    ];
-
-    const container = document.getElementById('botList');
-    const emptyMsg = document.getElementById('emptyMsg');
-
-    if (bots.length > 0) {
-      emptyMsg.style.display = "none";
-      bots.forEach(bot => {
-        const div = document.createElement('div');
-        div.className = 'card';
-        div.innerHTML = `
-          <h2>${bot.name}</h2>
-          <p>Status : <span class="${bot.status === 'online' ? 'online' : 'offline'}">
-            ${bot.status === 'online' ? '🟢 Actif' : '🔴 Hors ligne'}
-          </span></p>
-          <div class="actions">
-            <button>🔁 Redémarrer</button>
-            <button class="danger">🗑️ Supprimer</button>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    } else {
-      emptyMsg.style.display = "block";
-    }
-  </script>
 </body>
 </html>
